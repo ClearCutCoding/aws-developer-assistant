@@ -17,3 +17,22 @@ security-group-cidr:
           id: saas-db-DBSecurityGroup-xxxxxx
           port: 3306
 ```
+- Now you can update your IP in AWS.  If you do not pass in `--project` it will update for all projects
+
+```
+bin/console security-group:cidr --project myproject
+```
+
+## Create PHAR file
+
+```
+bin/box-compile
+build/aws-developer-assistant security-group:cidr --project myproject
+```
+
+### Resources
+
+- https://betterprogramming.pub/a-step-by-step-guide-to-create-homebrew-taps-from-github-repos-f33d3755ba74
+- https://medium.com/@cyrilgeorgespereira/create-a-compiled-php-console-application-and-deploy-it-with-homebrew-93876a8540fb
+- https://github.com/box-project/box/blob/main/doc/symfony.md#project-directory
+
