@@ -1,0 +1,14 @@
+{
+  "main": "bin/console",
+  "directories": ["config", "src", "vendor", "var"],
+  "files": [".env.local.php", "autoload_runtime.template"],
+  "finder": [
+    {
+      "name": "*.php",
+      "exclude": ["Tests", "tests"],
+      "in": "vendor"
+    }
+  ],
+  "compression": "BZ2",
+  "output": "build/aws-developer-assistant.phar"
+}

@@ -57,9 +57,11 @@
     },
     "scripts": {
         "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "cache:clear": "symfony-cmd"
         },
+        "post-autoload-dump": [
+            "@auto-scripts"
+        ],
         "post-install-cmd": [
             "@auto-scripts"
         ],
@@ -74,6 +76,9 @@
         "symfony": {
             "allow-contrib": false,
             "require": "6.2.*"
+        },
+        "runtime": {
+            "autoload_template": "autoload_runtime.template"
         }
     }
 }
