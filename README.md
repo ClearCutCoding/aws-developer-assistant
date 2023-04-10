@@ -20,7 +20,7 @@ security-group-cidr:
 - Now you can update your IP in AWS.  If you do not pass in `--project` it will update for all projects
 
 ```
-bin/console security-group:cidr --project myproject
+aws-developer-assistant security-group:cidr --project myproject
 ```
 
 ## Create PHAR file
