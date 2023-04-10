@@ -1,0 +1,8 @@
+phpcsfixer: true
+lintyaml: true
+linttwig: true
+phpcs: true
+phpunit: true
+phpmd: true
+phpstan: true
+psalm: true
