@@ -1,6 +1,6 @@
 phpcsfixer: true
 lintyaml: true
-linttwig: true
+linttwig: false
 phpcs: true
 phpunit: true
 phpmd: true

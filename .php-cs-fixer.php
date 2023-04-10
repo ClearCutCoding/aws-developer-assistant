@@ -1,8 +1,8 @@
 <?php
 
 $finder = (new PhpCsFixer\Finder())
-    ->in(__DIR__.'/src')
-    ->in(__DIR__.'/tests')
+    ->in(__DIR__ . '/src')
+    ->in(__DIR__ . '/tests')
     ->notPath('src/Symfony/Component/Translation/Tests/fixtures/resources.php')
 ;
 
@@ -14,4 +14,4 @@ return (new PhpCsFixer\Config())
         'concat_space' => ['spacing' => 'one'],
     ])
     ->setFinder($finder)
-    ;
+;
