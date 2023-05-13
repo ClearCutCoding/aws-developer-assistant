@@ -4,8 +4,8 @@ namespace App\Command;
 
 class CommandLogType
 {
-    public const LOGTYPE_ERROR = 'error';
-    public const LOGTYPE_COMMENT = 'comment';
-    public const LOGTYPE_SUCCESS = 'success';
-    public const LOGTYPE_CAUTION = 'caution';
+    final public const LOGTYPE_ERROR = 'error';
+    final public const LOGTYPE_COMMENT = 'comment';
+    final public const LOGTYPE_SUCCESS = 'success';
+    final public const LOGTYPE_CAUTION = 'caution';
 }

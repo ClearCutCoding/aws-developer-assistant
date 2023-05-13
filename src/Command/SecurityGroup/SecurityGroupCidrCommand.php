@@ -27,25 +27,12 @@ class SecurityGroupCidrCommand extends Command
 {
     use CommandTrait;
 
-    private IpService $ipService;
-
-    private ConfigLoader $configLoader;
-
-    private CidrConfigService $cidrConfigService;
-
-    private SecurityGroupService $securityGroupService;
-
     public function __construct(
-        IpService $ipService,
-        ConfigLoader $configLoader,
-        CidrConfigService $cidrConfigService,
-        SecurityGroupService $securityGroupService
+        private readonly IpService $ipService,
+        private readonly ConfigLoader $configLoader,
+        private readonly CidrConfigService $cidrConfigService,
+        private readonly SecurityGroupService $securityGroupService
     ) {
-        $this->ipService = $ipService;
-        $this->configLoader = $configLoader;
-        $this->cidrConfigService = $cidrConfigService;
-        $this->securityGroupService = $securityGroupService;
-
         parent::__construct();
     }
 
@@ -90,7 +77,7 @@ class SecurityGroupCidrCommand extends Command
         }
 
         foreach ($config['security-group-cidr']['projects'] as $project => $projectConfig) {
-            $project = strtolower($project);
+            $project = strtolower((string) $project);
             $this->processProject($project, $projectConfig, $cidrSavePath);
         }
     }

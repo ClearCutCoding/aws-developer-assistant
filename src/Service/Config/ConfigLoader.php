@@ -9,12 +9,8 @@ class ConfigLoader
 {
     private const CONFIG_PATH = '~/.clearcutcoding/aws-developer-assistant/config.yaml';
 
-    private LocalUserService $localUserService;
-
-    public function __construct(
-        LocalUserService $localUserService
-    ) {
-        $this->localUserService = $localUserService;
+    public function __construct(private readonly LocalUserService $localUserService)
+    {
     }
 
     public function load(): array

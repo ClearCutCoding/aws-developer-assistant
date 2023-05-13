@@ -7,12 +7,8 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class CidrConfigService
 {
-    private LocalUserService $localUserService;
-
-    public function __construct(
-        LocalUserService $localUserService
-    ) {
-        $this->localUserService = $localUserService;
+    public function __construct(private readonly LocalUserService $localUserService)
+    {
     }
 
     public function loadCidr(string $configFile): ?string

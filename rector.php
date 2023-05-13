@@ -11,13 +11,15 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/config',
         __DIR__ . '/public',
         __DIR__ . '/src',
+        __DIR__ . '/tests',
     ]);
 
     // register a single rule
     $rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);
 
-    // define sets of rules
-    //    $rectorConfig->sets([
-    //        LevelSetList::UP_TO_PHP_82
-    //    ]);
+    $rectorConfig->sets([
+        \Rector\Symfony\Set\SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
+        \Rector\Symfony\Set\SensiolabsSetList::FRAMEWORK_EXTRA_61,
+        LevelSetList::UP_TO_PHP_82
+    ]);
 };
