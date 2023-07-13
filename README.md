@@ -47,13 +47,13 @@ ecs:
 - SSH into an instance with the following command:
 
 ```
-CMD=$(bin/console ecs:ssh:instance --project myproject); eval $CMD
+CMD=$(aws-developer-assistant ecs:ssh:instance --project myproject); eval $CMD
 ```
 
 - SSH into a container with the following command:
 
 ```
-CMD=$(bin/console ecs:ssh:container --project myproject); eval $CMD
+CMD=$(aws-developer-assistant ecs:ssh:container --project myproject); eval $CMD
 ```
 
 - Filter the instance for some text in the image name (case insensitive):
@@ -64,9 +64,14 @@ CMD=$(bin/console ecs:ssh:container --project myproject --service prd); eval $CM
 
 ## Create PHAR file
 
+Note that the box-compile command sometimes errors when dumping autoloader.  Try again until it succeeds.
+
 ```
 bin/box-compile
-build/aws-developer-assistant security-group:cidr --project myproject
+
+build/aws-developer-assistant.phar security-group:cidr --project myproject
+build/aws-developer-assistant.phar ecs:ssh:instance --project myproject
+build/aws-developer-assistant.phar ecs:ssh:container --project myproject
 ```
 
 ### Resources
