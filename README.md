@@ -1,7 +1,13 @@
 # AWS Developer Assistant
 
+## Usage
+
 - Ensure the `aws` cli is installed and configured
 - Create a config file at `~/.clearcutcoding/aws-developer-assistant/config.yaml`
+
+### Add IP to security groups
+
+`aws.profile` - look in `~/.aws/config`
 
 ```
 security-group-cidr:
@@ -21,6 +27,39 @@ security-group-cidr:
 
 ```
 aws-developer-assistant security-group:cidr --project myproject
+```
+
+### SSH into ecs instances/containers
+
+`ssh_key_path` - what you use to ssh into the instance
+`aws.profile` - look in `~/.aws/config`
+`service.identifier` - the name given to the ecs instances, visible in aws ui when listing instances
+
+```
+ecs:
+  projects:
+    myproject:
+      ssh_key_path: /path/to/key.pem
+      aws.profile: myproject-personal
+      service.identifier: saas-ire
+```
+
+- SSH into an instance with the following command:
+
+```
+CMD=$(bin/console ecs:ssh:instance --project myproject); eval $CMD
+```
+
+- SSH into a container with the following command:
+
+```
+CMD=$(bin/console ecs:ssh:container --project myproject); eval $CMD
+```
+
+- Filter the instance for some text in the image name (case insensitive):
+
+```
+CMD=$(bin/console ecs:ssh:container --project myproject --service prd); eval $CMD
 ```
 
 ## Create PHAR file
