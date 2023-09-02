@@ -33,24 +33,25 @@ class Ec2HostRetriever
         $json = shell_exec("aws ec2 describe-instances --profile {$profile}");
         $instances = json_decode($json ?? '', null, 512, JSON_THROW_ON_ERROR);
 
-        foreach ($instances->Reservations as $value) {
-            $instance = $value->Instances[0];
-            $instanceName = '';
+        foreach ($instances->Reservations as $reservation) {
+            foreach ($reservation->Instances as $instance) {
+                $instanceName = '';
 
-            foreach ($instance->Tags as $tag) {
-                if ($tag->Key === 'Name') {
-                    $instanceName = $tag->Value;
+                foreach ($instance->Tags as $tag) {
+                    if ($tag->Key === 'Name') {
+                        $instanceName = $tag->Value;
+                    }
                 }
-            }
 
-            if ($this->ec2Name && $instanceName !== $this->ec2Name) {
-                continue;
-            }
+                if ($this->ec2Name && $instanceName !== $this->ec2Name) {
+                    continue;
+                }
 
-            $hosts[] = [
-                'name' => $instanceName,
-                'dns' => $instance->PublicDnsName,
-            ];
+                $hosts[] = [
+                    'name' => $instanceName,
+                    'dns' => $instance->PublicDnsName,
+                ];
+            }
         }
 
         return $hosts;
