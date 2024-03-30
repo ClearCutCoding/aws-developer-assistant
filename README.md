@@ -1,5 +1,12 @@
 # AWS Developer Assistant
 
+## Installation
+
+```
+brew tap ClearCutCoding/homebrew-tap
+brew install aws-developer-assistant
+```
+
 ## Usage
 
 - Ensure the `aws` cli is installed and configured
