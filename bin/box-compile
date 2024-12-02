@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-composer install --optimize-autoloader && bin/console cache:clear --env=prod --no-debug && bin/console cache:warmup --env=prod && box compile
+composer install --optimize-autoloader && bin/console cache:clear --env=prod --no-debug && bin/console cache:warmup --env=prod && php -d "error_reporting=E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED" /opt/homebrew/bin/box compile
