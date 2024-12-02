@@ -76,7 +76,7 @@ class EcsSSHInstanceCommand extends Command
         $selected = $this->askHost($hosts, $input, $output);
 
         $cmd = sprintf('ssh -l ec2-user -i "%s" %s', $projectConfig['ssh_key_path'], $selected);
-        echo $cmd;
+        passthru($cmd);
     }
 
     private function getHosts(array $projectConfig): array

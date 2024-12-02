@@ -85,7 +85,7 @@ class EcsSSHContainerCommand extends Command
         $container = $selected['container']['id'];
 
         $cmd = sprintf('ssh -l ec2-user -i "%s" -t %s "docker exec -it %s bash"', $projectConfig['ssh_key_path'], $host, $container);
-        echo $cmd;
+        passthru($cmd);
     }
 
     private function getHosts(array $projectConfig): array
